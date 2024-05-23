@@ -37,4 +37,28 @@ def add_entry(f):
     #userinput = pandas.concat([userinput ]), ignore_index = True)
     #userinput.to_csv(f, mode = "a", index = False, header = False)
 
+def search_xl(f):
+    df = pandas.read_csv(f, sep = ",")
+    userinput = "none"
+    userinputtype = "none"
+    column = ["name", "type"]
+    while not (userinputtype.lower() in column):
+        userinputtype = input("Do you want to search by name or type:")
 
+    while userinput == "none":
+        userinput = input("What do you want to search for? ")
+
+    if userinputtype.lower() == "name":
+        print(df[df["Name"] == userinput])
+    
+    elif userinputtype.lower() == "type":
+        print(df[df["Type"] == userinput])
+
+
+commanddict = {
+    "addrow": add_entry,
+    "search": search_xl
+}
+
+def func_dict(name, f):
+    commanddict[name](f)
