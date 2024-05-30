@@ -10,7 +10,7 @@ while(not exists(excelfilepath)):
 exf.convert_to_csv(excelfilepath)
 
 usercommand = ['empty']
-commands = ["addrow", "search"]
+commands = ["addrow", "search","total"]
 
 while( not(usercommand[0].lower() in commands)):
     usercommand = input("What action? ").split()

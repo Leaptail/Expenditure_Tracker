@@ -20,7 +20,7 @@ def convert_to_excel(f):
                             header = True)
     
 def add_entry(f):
-    column_names = ["Name", "Type", "Price", "Sales Tax"]
+    #column_names = ["Name", "Type", "Price", "Sales Tax"]
     userinput = [0]
     while len(userinput) != 4:
         userinput = input("New Entry: (name,type,price,tax)\n").split()
@@ -54,10 +54,15 @@ def search_xl(f):
     elif userinputtype.lower() == "type":
         print(df[df["Type"] == userinput])
 
+def total_expenditure(f):
+    df = pandas.read_csv(f, sep = ",")
+    total = df['Sale'].sum()
+    print(total)
 
 commanddict = {
     "addrow": add_entry,
-    "search": search_xl
+    "search": search_xl,
+    "total": total_expenditure
 }
 
 def func_dict(name, f):
